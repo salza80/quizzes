@@ -14,6 +14,11 @@
 
 /config/database.yml
 /public/assets
+/public/fonts
+/public/maps
+/public/scripts
+/public/styles
+/public/index.html
 /var.env
 /coverage
 
