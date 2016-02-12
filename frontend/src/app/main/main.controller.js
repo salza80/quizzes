@@ -6,13 +6,15 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr) {
+  function MainController($timeout, webDevTec, toastr, quiz) {
     var vm = this;
 
     vm.awesomeThings = [];
     vm.classAnimation = '';
     vm.creationDate = 1455044214343;
     vm.showToastr = showToastr;
+    vm.quizzes = quiz.getList();
+    console.log(vm.quizzes)
 
     activate();
 
