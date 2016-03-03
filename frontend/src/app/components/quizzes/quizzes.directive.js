@@ -3,10 +3,10 @@
 
   angular
     .module('frontend')
-    .directive('quizzes', quizzes);
+    .directive('quizzes', quizzes)
 
   /** @ngInject */
-  function quizzes() {
+  function quizzes(quiz) {
     var directive = {
       restrict: 'E',
       templateUrl: 'app/components/quizzes/quizzes.html',
@@ -23,7 +23,12 @@
     /** @ngInject */
     function QuizzesController() {
       var ctrl = this;
-      console.log(ctrl.items)
+      ctrl.quizzes = quiz.getList();
+      ctrl.newQuiz = quiz.getNew();
+      ctrl.addQuiz = function(){
+        quiz.addQuiz(ctrl.newQuiz)
+        // ctrl.newQuiz = quiz.getNew();
+      };
 
     }
   }

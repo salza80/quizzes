@@ -8,22 +8,27 @@
   /** @ngInject */
   function quiz($resource) {
     var Quiz = $resource('/api/quizzes.json', {
-      query: {method: 'get', isArray: true, cancellable: true}
+      query: {method: 'GET', isArray: true, cancellable: true},
+      save: {method: 'POST'}
     });
-    var data = [
-      {
-        'title': 'random stuff Quiz',
-        'description': 'https://angularjs.org/',
-        'img_url': 'HTML enhanced for web apps!'
-      }
-    ];
+    var quizzes = {};
+    quizzes.list=[]
 
     this.getList = getList;
+    this.addQuiz = addQuiz;
+    this.getNew = getNew
 
     function getList() {
-      data = Quiz.query()
-      return data;
+      quizzes.list = Quiz.query()
+      return quizzes;
+    }
+    function addQuiz(quiz){
+      Quiz.save(quiz, function success(){
+        quizzes.list.push(angular.copy(quiz));
+      })
+    }
+    function getNew(){
+      return {name: 'hello'}
     }
   }
-
 })();

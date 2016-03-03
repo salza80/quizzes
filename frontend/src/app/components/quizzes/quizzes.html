@@ -1,6 +1,11 @@
  <h3>here</h3>
  <ul class="quizzes">
-    <li ng-repeat="item in ctrl.items">
-      {{item.name}}
+    <li ng-repeat="quiz in ctrl.quizzes.list">
+      {{quiz.name}}
     </li>
   </ul>
+  <input ng-model = ctrl.newQuiz.name>
+  <button ng-click="ctrl.addQuiz()"></button> 
+  <div>
+  {{ctrl.newQuiz}}
+  </div>
