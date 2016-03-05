@@ -7,8 +7,7 @@
     var toastr;
 
     beforeEach(module('frontend'));
-    beforeEach(inject(function(_$controller_, _$timeout_, _webDevTec_, _toastr_) {
-      spyOn(_webDevTec_, 'getTec').and.returnValue([{}, {}, {}, {}, {}]);
+    beforeEach(inject(function(_$controller_, _$timeout_, _toastr_) { 
       spyOn(_toastr_, 'info').and.callThrough();
 
       vm = _$controller_('MainController');
