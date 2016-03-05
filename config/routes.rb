@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- # root 'home#index'
+  root 'home#index'
   scope '/api', module: 'api' do
     resources :quizzes, only: [:index, :create]
   end
