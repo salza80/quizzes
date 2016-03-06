@@ -7,7 +7,7 @@ module Api
     def create
       @quiz = Quiz.create(quiz_params)
       unless @quiz.save
-        format.json { render json: @quiz.errors, status: :unprocessable_entity }
+        render json: @quiz.errors, status: :unprocessable_entity
       end
     end
 

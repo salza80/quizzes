@@ -11,17 +11,25 @@
       restrict: 'E',
       templateUrl: 'app/components/navbar/navbar.html',
       scope: {
-          creationDate: '='
+          activeMenu: '&'
       },
       controller: NavbarController,
-      controllerAs: 'vm',
+      controllerAs: 'ctrl',
       bindToController: true
     };
 
     return directive;
 
     /** @ngInject */
-    function NavbarController() {
+    function NavbarController() { 
+      var ctrl = this;
+      ctrl.getClass = function(item){
+        if(item == ctrl.activeMenu()){
+          return 'active'
+        }else {
+          return ''
+        }
+      }
       
     }
   }

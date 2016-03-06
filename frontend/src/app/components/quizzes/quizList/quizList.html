@@ -1,7 +1,7 @@
  <h3>here</h3>
- <ul class="quizzes">
+ <ul class="quiz-list">
     <li ng-repeat="quiz in ctrl.quizzes.list">
-      {{quiz.name}}
+      <a ng-href="#/{{quiz.url_name}}">{{quiz.name}}</a>
     </li>
   </ul>
   <input ng-model = ctrl.newQuiz.name>

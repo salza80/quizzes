@@ -3,17 +3,17 @@
 
   angular
     .module('frontend')
-    .directive('quizzes', quizzes)
+    .directive('quizList', quizList)
 
   /** @ngInject */
-  function quizzes(quiz) {
+  function quizList(quiz) {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/components/quizzes/quizzes.html',
+      templateUrl: 'app/components/quizzes/quizList/quizList.html',
       scope: {
           items: '='
       },
-      controller: QuizzesController,
+      controller: QuizListController,
       controllerAs: 'ctrl',
       bindToController: true
     };
@@ -21,7 +21,7 @@
     return directive;
 
     /** @ngInject */
-    function QuizzesController() {
+    function QuizListController() {
       var ctrl = this;
       ctrl.quizzes = quiz.getList();
       ctrl.newQuiz = quiz.getNew();

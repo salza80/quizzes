@@ -3,12 +3,11 @@
 
   angular
     .module('frontend')
-    .controller('MainController', MainController);
+    .controller('AboutController', AboutController);
 
   /** @ngInject */
-  function MainController() {
+  function AboutController() {
     var vm = this;
-
-    vm.pageName = 'main'
+    vm.PageName = 'about'
   }
 })();
