@@ -1,28 +1,22 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
+== Setup Dev Env
+  Database - postgres
+  rake db:migrate
+
+
+== Development Environment
+
+  1. Install Deps: Ruby, Bundler, nodejs, npm, git, heroku
+
+  2. git:clone
+
+  3. cd quizzes && bundle install
+
+  4. cd frontend && bower install
+
+  5. rails s
+
+  6. cd frontend && gulp serve
+
