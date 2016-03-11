@@ -11,15 +11,15 @@
 Quiz.destroy_all
 
 quizzes = Quiz.create([
-    {title: 'my first quiz', url_name: 'my_first_quiz', description: 'my bestest quiz ever', img_url: 'testar.com/image.jpg'},
-    {title: 'my second quiz', url_name: 'my_second_quiz', description: 'my worst quiz ever', img_url: 'wow.com/image.jpg'},
-    {title: 'my third quiz', url_name: 'my_third_quiz', description: 'my only single question quiz ever', img_url: 'gmail.com/image.jpg'}
+    {title: 'my first quiz', url_name: 'my_first_quiz', description: 'my bestest quiz ever', img_url: 'threeDogs.png'},
+    {title: 'my second quiz', url_name: 'my_second_quiz', description: 'my worst quiz ever', img_url: 'threeDogs.png'},
+    {title: 'my third quiz', url_name: 'my_third_quiz', description: 'my only single question quiz ever', img_url: 'threeDogs.png'}
   ])
 
 questions =  Question.create([
-    {order: 1, title: 'my first quiz', quiz: quizzes.first, description: 'my bestest quiz ever', img_url: 'testar.com/image.jpg'},
-    {order: 2, title: 'my second quiz', quiz: quizzes.first, description: 'my worst quiz ever', img_url: 'wow.com/image.jpg'},
-    {order: 3, title: 'my third quiz', quiz: quizzes.first, description: 'my only single question quiz ever', img_url: 'gmail.com/image.jpg'}
+    {order: 1, title: 'my first quiz', quiz: quizzes.first, description: 'my bestest quiz ever', img_url: 'threeDogs.png'},
+    {order: 2, title: 'my second quiz', quiz: quizzes.first, description: 'my worst quiz ever', img_url: 'threeDogs.png'},
+    {order: 3, title: 'my third quiz', quiz: quizzes.first, description: 'my only single question quiz ever', img_url: 'threeDogs.png'}
   ])
 
 answers =  Answer.create([
@@ -42,9 +42,9 @@ answers = Answer.create([
   ])
 
 outcomes =  Outcome.create([
-    {order: 1, title: 'my first outcome', quiz: quizzes.first, description: 'my bestest outcome', img_url: 'testar.com/image.jpg', points_to: 2},
-    {order: 2, title: 'my second outcome',  quiz: quizzes.first, description: 'my toher outcome', img_url: 'wow.com/image.jpg', points_to: 6},
-    {order: 3, title: 'my third outcome',  quiz: quizzes.first, description: 'my only other outcomer', img_url: 'gmail.com/image.jpg', points_to: 14}
+    {order: 1, title: 'my first outcome', quiz: quizzes.first, description: 'my bestest outcome', img_url: 'threeDogs.png', points_to: 2},
+    {order: 2, title: 'my second outcome',  quiz: quizzes.first, description: 'my toher outcome', img_url: 'threeDogs.png', points_to: 6},
+    {order: 3, title: 'my third outcome',  quiz: quizzes.first, description: 'my only other outcomer', img_url: 'threeDogs.png', points_to: 14}
   ])
 
 
