@@ -1,10 +1,10 @@
  <h3>here</h3>
  <ul class="quiz-list">
     <li ng-repeat="quiz in ctrl.quizzes.list">
-      <a ng-href="#/{{quiz.url_name}}">{{quiz.name}}</a>
+      <a ng-href="#/{{quiz.url_name}}">{{quiz.title}}</a>
     </li>
   </ul>
-  <input ng-model = ctrl.newQuiz.name>
+  <input ng-model = ctrl.newQuiz.title>
   <button ng-click="ctrl.addQuiz()"></button> 
   <div>
   {{ctrl.newQuiz}}

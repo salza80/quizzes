@@ -11,9 +11,9 @@
 Quiz.destroy_all
 
 quizzes = Quiz.create([
-    {name: 'my first quiz', url_name: 'my_first_quiz', description: 'my bestest quiz ever', img_url: 'testar.com/image.jpg'},
-    {name: 'my second quiz', url_name: 'my_second_quiz', description: 'my worst quiz ever', img_url: 'wow.com/image.jpg'},
-    {name: 'my third quiz', url_name: 'my_third_quiz', description: 'my only single question quiz ever', img_url: 'gmail.com/image.jpg'}
+    {title: 'my first quiz', url_name: 'my_first_quiz', description: 'my bestest quiz ever', img_url: 'testar.com/image.jpg'},
+    {title: 'my second quiz', url_name: 'my_second_quiz', description: 'my worst quiz ever', img_url: 'wow.com/image.jpg'},
+    {title: 'my third quiz', url_name: 'my_third_quiz', description: 'my only single question quiz ever', img_url: 'gmail.com/image.jpg'}
   ])
 
 questions =  Question.create([

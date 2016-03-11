@@ -28,7 +28,7 @@
       })
     }
     function getNew(){
-      return {name: 'hello'}
+      return {title: 'hello'}
     }
   }
 })();
