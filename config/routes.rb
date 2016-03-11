@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'home#index'
   scope '/api', module: 'api' do
-    resources :quizzes, only: [:index, :create]
+    resources :quizzes, only: [:index]
+    get 'quizzes/:url_name', to: 'quizzes#show'
   end
   # get '/home', to: 'home#index'
   
