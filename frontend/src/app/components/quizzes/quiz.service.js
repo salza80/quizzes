@@ -25,7 +25,7 @@
     }
     function getQuiz(name_url){
       quiz.active = Quiz.get({name_url: name_url})
-      return quiz;
+      return quiz.active.$promise;
     }
   }
 })();

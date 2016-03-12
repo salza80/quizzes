@@ -1,4 +1,8 @@
-<h3>Simple Quiz</h3>
-<div class="simple-quiz">
-  {{ctrl.quiz.active.title}}
+<div>
+  <h3> {{ctrl.quiz.title}}</h3>
+  <div class="simple-quiz">
+      <div>Question {{ctrl.currentQuestion.order}} of {{ctrl.totalQuestions}}</div>
+      <quiz-question question="ctrl.currentQuestion"></quiz-question>
+      <input class="btn btn-default" ng-click="ctrl.nextQuestion()" type="button" value="Next">
+  </div>
 </div>
