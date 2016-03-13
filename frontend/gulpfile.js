@@ -9,6 +9,10 @@
 var gulp = require('gulp');
 var wrench = require('wrench');
 
+var notify = require('gulp-notify');
+var jscs = require('gulp-jscs');
+var jshint = require('gulp-jshint');
+
 /**
  *  This will load all js or coffee files in the gulp directory
  *  in order to load all gulp tasks
@@ -27,3 +31,25 @@ wrench.readdirSyncRecursive('./gulp').filter(function(file) {
 gulp.task('default', ['clean'], function () {
   gulp.start('build');
 });
+
+
+gulp.task('jscs', function() {
+    gulp.src('src/**/*.js')
+        .pipe(jscs())
+        .pipe(notify({
+            title: 'JSCS',
+            message: 'JSCS Passed. Let it fly!'
+        }));
+});
+
+gulp.task('lint', function() {
+    gulp.src('src/**/*.js')
+        .pipe(jshint('.jshintrc'))
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(notify({
+            title: 'JSHint',
+            message: 'JSHint Passed. Let it fly!',
+        }))
+});
+
+
