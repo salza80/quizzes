@@ -13,18 +13,18 @@
     });
     var quizzes = {};
     quizzes.list=[];
-    var quiz = {}
-    quiz.active = {}
+    var quiz = {};
+    quiz.active = {};
 
     this.getList = getList;
     this.getQuiz = getQuiz;
 
     function getList() {
-      quizzes.list = Quiz.query()
+      quizzes.list = Quiz.query();
       return quizzes;
     }
     function getQuiz(name_url){
-      quiz.active = Quiz.get({name_url: name_url})
+      quiz.active = Quiz.get({name_url: name_url});
       return quiz.active.$promise;
     }
   }

@@ -19,6 +19,6 @@
 
   angular
   .module('frontend')
-  .component('quizList', quizList)
+  .component('quizList', quizList);
 
 })();

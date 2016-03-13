@@ -24,12 +24,12 @@
     function NavbarController() { 
       var ctrl = this;
       ctrl.getClass = function(item){
-        if(item == ctrl.activeMenu()){
-          return 'active'
+        if(item === ctrl.activeMenu()){
+          return 'active';
         }else {
-          return ''
+          return '';
         }
-      }
+      };
       
     }
   }

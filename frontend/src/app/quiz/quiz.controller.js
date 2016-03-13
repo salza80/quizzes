@@ -8,7 +8,7 @@
   /** @ngInject */
   function QuizController($routeParams) {
     var vm = this;
-    vm.PageName = 'quiz'
+    vm.PageName = 'quiz';
     vm.QuizName = $routeParams.quizName;
   }
 })();

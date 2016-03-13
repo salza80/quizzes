@@ -9,6 +9,6 @@
   function MainController() {
     var vm = this;
 
-    vm.pageName = 'main'
+    vm.pageName = 'main';
   }
 })();

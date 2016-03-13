@@ -8,6 +8,6 @@
   /** @ngInject */
   function AboutController() {
     var vm = this;
-    vm.PageName = 'about'
+    vm.PageName = 'about';
   }
 })();

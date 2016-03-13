@@ -23,21 +23,21 @@
     function init() {
       quiz.getQuiz(ctrl.urlName).then(function(data){
        quizData = data;
-       ctrl.quiz = quizData
-       ctrl.currentQuestion = quizData.questions[currentQuestionIndex]
-       ctrl.totalQuestions = ctrl.quiz.questions.length
+       ctrl.quiz = quizData;
+       ctrl.currentQuestion = quizData.questions[currentQuestionIndex];
+       ctrl.totalQuestions = ctrl.quiz.questions.length;
       });
     }
 
     function nextQuestion(answer){
-      answers.push(answer)
-      currentQuestionIndex += 1
-      ctrl.currentQuestion = quizData.questions[currentQuestionIndex]
+      answers.push(answer);
+      currentQuestionIndex += 1;
+      ctrl.currentQuestion = quizData.questions[currentQuestionIndex];
     } 
   }
 
   angular
   .module('frontend')
-  .component('simpleQuiz', simpleQuiz)
+  .component('simpleQuiz', simpleQuiz);
 
 })();
