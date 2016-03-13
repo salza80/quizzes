@@ -31,9 +31,29 @@
 
     function nextQuestion(answer){
       answers.push(answer);
+      console.log(currentQuestionIndex)
+      console.log(quizData.questions.length)
       currentQuestionIndex += 1;
-      ctrl.currentQuestion = quizData.questions[currentQuestionIndex];
+      if(currentQuestionIndex === quizData.questions.length){
+        getOutcome()
+      }else {
+        ctrl.currentQuestion = quizData.questions[currentQuestionIndex];
+      }
     } 
+
+    function totalPoints(){
+      var points = 0;
+      for (var i=0; i< answers.length; i++){
+        points += answers[i].points;
+      }
+      return points;
+    }
+
+    function getOutcome(){
+      quiz.getResultCode(totalPoints()).then(function(data){
+        console.log(data.result_code);
+      })
+    }
   }
 
   angular
