@@ -14,10 +14,16 @@ module Api
       @quiz = Quiz.includes(questions: [:answers]).find_by(url_name: params[:url_name])
     end
 
-    def destroy
+    # finish the quiz, return result code
+    def result_code
+      @result = Base64.urlsafe_encode64(params[:points])
     end
 
     private
+
+    def quiz_params
+      params.require(:result).permit(:points, :url_name)
+    end
 
     # def quiz_params
     #   params.require(:quiz).permit(:name)

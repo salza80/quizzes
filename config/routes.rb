@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   scope '/api', module: 'api' do
     resources :quizzes, only: [:index]
     get 'quizzes/:url_name', to: 'quizzes#show'
+    post 'quizzes/result_code', to: 'quizzes#result_code'
   end
   # get '/home', to: 'home#index'
   
