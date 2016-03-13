@@ -1,5 +1,5 @@
-HERE
 <h4>
 {{ctrl.question.title}}
 </h4>
 <p>{{ctrl.question.description}}</p>
+<quiz-answers answers="ctrl.question.answers" on-answered="ctrl.onAnswered({answer: answer})"></quiz-answers>

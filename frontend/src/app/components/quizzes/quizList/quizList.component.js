@@ -7,7 +7,7 @@
   var quizList = {
     templateUrl: 'app/components/quizzes/quizList/quizList.html',
     controller: QuizListController,
-    controllerAs: 'ctrl',
+    controllerAs: 'ctrl'
   };
 
 

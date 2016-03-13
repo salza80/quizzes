@@ -10,19 +10,15 @@
     controllerAs: 'ctrl'
   };
 
-
-
   /** @ngInject */
   function simpleQuizController(quiz) {
     var ctrl = this;
     var currentQuestionIndex = 0;
     var quizData= {};
+    var answers = [];
     ctrl.quiz = {};
     init();
     ctrl.nextQuestion = nextQuestion;
-
-
-    
 
     function init() {
       quiz.getQuiz(ctrl.urlName).then(function(data){
@@ -33,7 +29,8 @@
       });
     }
 
-    function nextQuestion(){
+    function nextQuestion(answer){
+      answers.push(answer)
       currentQuestionIndex += 1
       ctrl.currentQuestion = quizData.questions[currentQuestionIndex]
     } 
@@ -42,5 +39,5 @@
   angular
   .module('frontend')
   .component('simpleQuiz', simpleQuiz)
-  
+
 })();
