@@ -1,5 +1,6 @@
-<h4>
+<div>
 {{ctrl.question.title}}
-</h4>
+</div>
+<img class="img-responsive" src="assets/images/{{ctrl.question.img_url}}" alt="{{ctrl.question.img_url}}" />
 <p>{{ctrl.question.description}}</p>
 <quiz-answers answers="ctrl.question.answers" on-answered="ctrl.onAnswered({answer: answer})"></quiz-answers>
