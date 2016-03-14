@@ -4,26 +4,38 @@
   var simpleQuiz = {
     templateUrl: 'app/components/quizzes/simpleQuiz/simpleQuiz.html',
     bindings: {
-        urlName: '='
+        urlName: '=',
+        resultCode: '='
     },
     controller: simpleQuizController,
     controllerAs: 'ctrl'
   };
 
   /** @ngInject */
-  function simpleQuizController(quiz) {
+  function simpleQuizController(quiz, $location) {
     var ctrl = this;
     var currentQuestionIndex = 0;
     var quizData= {};
     var answers = [];
+    ctrl.showQuestions = false;
+    ctrl.showOutcome = false;
     ctrl.quiz = {};
-    init();
     ctrl.nextQuestion = nextQuestion;
+      init();
 
     function init() {
-      quizData = quiz.getQuiz(ctrl.urlName)
+      if (angular.isDefined(ctrl.resultCode)){
+        getOutcome(ctrl.urlName, ctrl.resultCode);
+      } else {
+       getQuiz();
+      }
+    }
+
+    function getQuiz(){
+     quizData = quiz.getQuiz(ctrl.urlName)
+     ctrl.showQuestions = true;
       quizData.active.$promise.then(function(){
-        ctrl.quiz = quizData.active
+        ctrl.quiz = quizData.active;
         ctrl.currentQuestion = quizData.active.questions[currentQuestionIndex];
         ctrl.totalQuestions = ctrl.quiz.questions.length;
       })
@@ -51,8 +63,16 @@
       quiz.getResultCode(totalPoints())
       quizData.result_code.$promise.then(function(data){
         //redirect URL to outcome
+        var path = $location.path()
+        $location.path(path + '/result/' + data.result_code)
+      })
+    }
 
-        // console.log(data.result_code);
+    function getOutcome(urlName, resultCode){
+      ctrl.showOutcome=true;
+      quizData = quiz.getOutcome(urlName, resultCode)
+      quizData.outcome.$promise.then(function(data){
+        ctrl.outcome = quizData.outcome;
       })
     }
   }

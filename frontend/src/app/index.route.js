@@ -22,7 +22,7 @@
         controller: 'QuizController',
         controllerAs: 'quiz'
       })
-      .when('/quiz/:quizName/result/:result_code', {
+      .when('/quiz/:quizName/result/:resultCode', {
         templateUrl: 'app/quiz/quiz.html',
         controller: 'QuizController',
         controllerAs: 'quiz'

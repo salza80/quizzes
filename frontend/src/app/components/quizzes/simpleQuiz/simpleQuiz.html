@@ -1,12 +1,12 @@
 <div>
   <h3> {{ctrl.quiz.title}}</h3>
   <div class="simple-quiz">
-    <div class="question">
+    <div class="question" ng-show="ctrl.showQuestions">
       <div>Question {{ctrl.currentQuestion.order}} of {{ctrl.totalQuestions}}</div>
       <quiz-question question="ctrl.currentQuestion" on-answered="ctrl.nextQuestion(answer)"></quiz-question>
     </div>
-    <div class="outcome">
-      
+    <div class="outcome"  ng-show="ctrl.showOutcome">
+      <quiz-outcome outcome="ctrl.outcome"></quiz-outcome>
     </div>
   </div>
 </div>

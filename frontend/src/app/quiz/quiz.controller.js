@@ -10,5 +10,7 @@
     var vm = this;
     vm.PageName = 'quiz';
     vm.QuizName = $routeParams.quizName;
+    vm.resultCode = $routeParams.resultCode;
+
   }
 })();

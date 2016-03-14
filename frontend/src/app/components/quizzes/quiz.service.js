@@ -19,7 +19,9 @@
         },
         outcome: {
           url: '/api/quizzes/:name_url/outcome/:result_code.json',
-          method: 'GET'
+          method: 'GET',
+          params: {name_url: '@name_url',
+                    result_code: '@result_code'}
         }
       });
     var quizzes = {};
@@ -45,8 +47,8 @@
       quiz.result_code = Quiz.resultcode({points: points});
       return quiz
     }
-    function getOutcome(name_url, points){
-      quiz.outcome = quiz.outcome({name_url: name_url, points: points});
+    function getOutcome(name_url, resultCode){
+      quiz.outcome = Quiz.outcome({name_url: name_url, result_code: resultCode});
       return quiz
     }
   }
