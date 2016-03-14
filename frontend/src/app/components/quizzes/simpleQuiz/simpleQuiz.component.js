@@ -21,23 +21,21 @@
     ctrl.nextQuestion = nextQuestion;
 
     function init() {
-      quiz.getQuiz(ctrl.urlName).then(function(data){
-       quizData = data;
-       ctrl.quiz = quizData;
-       ctrl.currentQuestion = quizData.questions[currentQuestionIndex];
-       ctrl.totalQuestions = ctrl.quiz.questions.length;
-      });
+      quizData = quiz.getQuiz(ctrl.urlName)
+      quizData.active.$promise.then(function(){
+        ctrl.quiz = quizData.active
+        ctrl.currentQuestion = quizData.active.questions[currentQuestionIndex];
+        ctrl.totalQuestions = ctrl.quiz.questions.length;
+      })
     }
 
     function nextQuestion(answer){
       answers.push(answer);
-      console.log(currentQuestionIndex)
-      console.log(quizData.questions.length)
       currentQuestionIndex += 1;
-      if(currentQuestionIndex === quizData.questions.length){
-        getOutcome()
+      if(currentQuestionIndex === quizData.active.questions.length){
+        finishQuiz()
       }else {
-        ctrl.currentQuestion = quizData.questions[currentQuestionIndex];
+        ctrl.currentQuestion = quizData.active.questions[currentQuestionIndex];
       }
     } 
 
@@ -49,9 +47,12 @@
       return points;
     }
 
-    function getOutcome(){
-      quiz.getResultCode(totalPoints()).then(function(data){
-        console.log(data.result_code);
+    function finishQuiz(){
+      quiz.getResultCode(totalPoints())
+      quizData.result_code.$promise.then(function(data){
+        //redirect URL to outcome
+
+        // console.log(data.result_code);
       })
     }
   }

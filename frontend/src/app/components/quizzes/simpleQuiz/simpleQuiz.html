@@ -1,7 +1,12 @@
 <div>
   <h3> {{ctrl.quiz.title}}</h3>
   <div class="simple-quiz">
+    <div class="question">
       <div>Question {{ctrl.currentQuestion.order}} of {{ctrl.totalQuestions}}</div>
       <quiz-question question="ctrl.currentQuestion" on-answered="ctrl.nextQuestion(answer)"></quiz-question>
+    </div>
+    <div class="outcome">
+      
+    </div>
   </div>
 </div>
