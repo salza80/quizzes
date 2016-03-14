@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :quizzes, only: [:index]
     get 'quizzes/:url_name', to: 'quizzes#show'
     post 'quizzes/result_code', to: 'quizzes#result_code'
+    get 'quizzes/:url_name/outcome/:result_code', to: 'quizzes#outcome'
   end
   # get '/home', to: 'home#index'
   
