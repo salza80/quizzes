@@ -36,20 +36,12 @@ gulp.task('default', ['clean'], function () {
 gulp.task('jscs', function() {
     gulp.src('src/**/*.js')
         .pipe(jscs())
-        .pipe(notify({
-            title: 'JSCS',
-            message: 'JSCS Passed. Let it fly!'
-        }));
 });
 
 gulp.task('lint', function() {
     gulp.src('src/**/*.js')
         .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter('jshint-stylish'))
-        .pipe(notify({
-            title: 'JSHint',
-            message: 'JSHint Passed. Let it fly!',
-        }))
 });
 
 
