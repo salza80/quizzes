@@ -1,6 +1,13 @@
-<div>
-{{ctrl.question.title}}
+<div class="question">
+  <div class="question-title well">
+   Q.{{ctrl.question.order}}: {{ctrl.question.title}}
+  </div>
+  <img class="img-responsive img-thumbnail center-block" 
+       ng-show = "ctrl.question.img_url > ''" 
+       src="assets/images/{{ctrl.question.img_url}}" 
+       alt="{{ctrl.question.img_url}}" />
+  <div class="question-description" ng-show="ctrl.question.description > ''">
+    {{ctrl.question.description}}
+  </div>
+  <quiz-answers answers="ctrl.question.answers" on-answered="ctrl.onAnswered({answer: answer})"></quiz-answers>
 </div>
-<img class="img-responsive" src="assets/images/{{ctrl.question.img_url}}" alt="{{ctrl.question.img_url}}" />
-<p>{{ctrl.question.description}}</p>
-<quiz-answers answers="ctrl.question.answers" on-answered="ctrl.onAnswered({answer: answer})"></quiz-answers>

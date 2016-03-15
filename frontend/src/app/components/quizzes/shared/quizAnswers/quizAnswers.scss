@@ -1,5 +1,19 @@
-.answer-box {
-  li:hover {
-    background-color: $dropdown-link-hover-bg;
+quiz-answers {
+  .answers {
+    p{
+      font-weight: bold;
+    }
+    margin-top: 10px;
+    .glyphicon{
+      @extend .glyphicon-minus;
+      margin-right: 10px;
+    }
+    li:hover {
+      background-color: $dropdown-link-hover-bg;
+      .glyphicon{
+        color: green;
+        @extend .glyphicon-ok;
+      }
+    }
   }
 }

@@ -1,4 +1,9 @@
-<p>Select Answer!</p>
-<ul class="answer-box list-group">
-  <li class="list-group-item" ng-click="ctrl.onAnswered({answer: answer})" ng-repeat="answer in ctrl.answers">{{answer.title}}</li>
-</ul>
+<div class="answers well">
+  <p>Select your answer!</p>
+  <ul class="answer-box list-group">
+    <li class="list-group-item" ng-click="ctrl.onAnswered({answer: answer})" ng-repeat="answer in ctrl.answers">
+      <span class='glyphicon' aria-hidden="true"></span>
+      <span>{{answer.title}}</span>
+    </li>
+  </ul>
+</div>

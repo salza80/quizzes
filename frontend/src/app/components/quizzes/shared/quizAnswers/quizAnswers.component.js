@@ -11,7 +11,7 @@
     };
     /** @ngInject */
     function quizAnswersController() {
-      // var ctrl = this; 
+      // var ctrl = this;
     }
 
   angular

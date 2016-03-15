@@ -32,20 +32,20 @@
     }
 
     function getQuiz(){
-     quizData = quiz.getQuiz(ctrl.urlName)
+     quizData = quiz.getQuiz(ctrl.urlName);
      ctrl.showQuestions = true;
       quizData.active.$promise.then(function(){
         ctrl.quiz = quizData.active;
         ctrl.currentQuestion = quizData.active.questions[currentQuestionIndex];
         ctrl.totalQuestions = ctrl.quiz.questions.length;
-      })
+      });
     }
 
     function nextQuestion(answer){
       answers.push(answer);
       currentQuestionIndex += 1;
       if(currentQuestionIndex === quizData.active.questions.length){
-        finishQuiz()
+        finishQuiz();
       }else {
         ctrl.currentQuestion = quizData.active.questions[currentQuestionIndex];
       }
@@ -60,20 +60,20 @@
     }
 
     function finishQuiz(){
-      quiz.getResultCode(totalPoints())
+      quiz.getResultCode(totalPoints());
       quizData.result_code.$promise.then(function(data){
         //redirect URL to outcome
-        var path = $location.path()
-        $location.path(path + '/result/' + data.result_code)
-      })
+        var path = $location.path();
+        $location.path(path + '/result/' + data.result_code);
+      });
     }
 
     function getOutcome(urlName, resultCode){
       ctrl.showOutcome=true;
-      quizData = quiz.getOutcome(urlName, resultCode)
+      quizData = quiz.getOutcome(urlName, resultCode);
       quizData.outcome.$promise.then(function(data){
         ctrl.outcome = quizData.outcome;
-      })
+      });
     }
   }
 

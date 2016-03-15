@@ -40,16 +40,16 @@
     }
     function getQuiz(name_url){
       quiz.active = Quiz.get({name_url: name_url});
-      return quiz
+      return quiz;
     }
 
     function getResultCode(points){
       quiz.result_code = Quiz.resultcode({points: points});
-      return quiz
+      return quiz;
     }
     function getOutcome(name_url, resultCode){
       quiz.outcome = Quiz.outcome({name_url: name_url, result_code: resultCode});
-      return quiz
+      return quiz;
     }
   }
 })();
