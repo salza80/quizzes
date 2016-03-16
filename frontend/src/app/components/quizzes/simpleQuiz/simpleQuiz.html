@@ -4,7 +4,7 @@
       <div class="col-xs-10 quiz-title">
         {{ctrl.quiz.title}}
       </div>
-      <div class="col-xs-2">
+      <div class="col-xs-2" ng-show="ctrl.showQuestions">
         Question 
         <span class='no-wrap'>{{ctrl.currentQuestion.order}} of {{ctrl.totalQuestions}}</span>
       </div>
@@ -17,6 +17,7 @@
       </div>
       <div class="outcome"  ng-show="ctrl.showOutcome">
         <quiz-outcome outcome="ctrl.outcome"></quiz-outcome>
+        <a href="#/quiz/{{ctrl.urlName}}" class="btn btn-primary center-block" role="button">Play Now!</a>
       </div>
     </div>
   </div>

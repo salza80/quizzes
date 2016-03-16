@@ -1,5 +1,9 @@
-<p>Your Outcome</p>
 <div class="outcome-box">
-<h4>{{ctrl.outcome.title}}</h4>
-<p>{{ctrl.outcome.description}}</p>
+  <h2>{{ctrl.outcome.title}}</h2>
+  <img class="img-responsive img-thumbnail center-block" 
+     src="assets/images/{{ctrl.outcome.img_url}}" 
+     alt="{{ctrl.outcome.img_url}}" />
+  <div class="outcome-description well">
+    {{ctrl.outcome.description}}
+  </div>
 </div>

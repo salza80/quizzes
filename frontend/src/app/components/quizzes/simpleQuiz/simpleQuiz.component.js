@@ -24,16 +24,17 @@
       init();
 
     function init() {
+      getQuiz();
       if (angular.isDefined(ctrl.resultCode)){
         getOutcome(ctrl.urlName, ctrl.resultCode);
+        ctrl.showOutcome=true;
       } else {
-       getQuiz();
+        ctrl.showQuestions = true;
       }
     }
 
     function getQuiz(){
      quizData = quiz.getQuiz(ctrl.urlName);
-     ctrl.showQuestions = true;
       quizData.active.$promise.then(function(){
         ctrl.quiz = quizData.active;
         ctrl.currentQuestion = quizData.active.questions[currentQuestionIndex];
@@ -69,7 +70,6 @@
     }
 
     function getOutcome(urlName, resultCode){
-      ctrl.showOutcome=true;
       quizData = quiz.getOutcome(urlName, resultCode);
       quizData.outcome.$promise.then(function(data){
         ctrl.outcome = quizData.outcome;
