@@ -21,7 +21,8 @@
     ctrl.showOutcome = false;
     ctrl.quiz = {};
     ctrl.nextQuestion = nextQuestion;
-      init();
+    ctrl.current_question_no = current_question_no;
+    init();
 
     function init() {
       getQuiz();
@@ -40,6 +41,10 @@
         ctrl.currentQuestion = quizData.active.questions[currentQuestionIndex];
         ctrl.totalQuestions = ctrl.quiz.questions.length;
       });
+    }
+
+    function current_question_no(){
+      return currentQuestionIndex + 1
     }
 
     function nextQuestion(answer){

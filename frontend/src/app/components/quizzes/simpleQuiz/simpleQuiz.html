@@ -1,12 +1,14 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
     <div class="row">
-      <div class="col-xs-10 quiz-title">
+      <div class="col-md-10 col-xs-12 quiz-title">
         {{ctrl.quiz.title}}
       </div>
-      <div class="col-xs-2" ng-show="ctrl.showQuestions">
-        Question 
-        <span class='no-wrap'>{{ctrl.currentQuestion.order}} of {{ctrl.totalQuestions}}</span>
+      <div class="col-md-2 col-xs-12 text-right" ng-show="ctrl.showQuestions">
+        <span>
+          Question 
+          <span class='no-wrap'>{{ctrl.current_question_no()}} of {{ctrl.totalQuestions}}</span>
+        </span>
       </div>
     </div>
   </div>
