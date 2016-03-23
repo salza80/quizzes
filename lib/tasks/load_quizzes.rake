@@ -26,14 +26,14 @@ namespace :db do
             title: q.xpath('title').text,
             description: q.xpath('description').text,
             img_url: q.xpath('img_url').text,
-            order:  q.xpath('order').empty? ? loadquestions.children.index(q) : q.xpath('order').text.to_i
+            order_by:  q.xpath('order_by').empty? ? loadquestions.children.index(q) : q.xpath('order_by').text.to_i
           )
           (1..6).each do |i|
             next if q.xpath("answer_#{i}_title").text.empty?
             question.answers.build(
               title: q.xpath("answer_#{i}_title").text,
               points: q.xpath("answer_#{i}_points").text.to_i,
-              order:  q.xpath('order').empty? ? Random.new().rand(100) : q.xpath('order').text.to_i  
+              order_by:  q.xpath('order_by').empty? ? Random.new().rand(100) : q.xpath('order_by').text.to_i  
             )
           end
         end
@@ -49,7 +49,7 @@ namespace :db do
             description: q.xpath('description').text,
             img_url: q.xpath('img_url').text,
             points_to: q.xpath('points_to').text.to_i,
-            order:  q.xpath('order').empty? ? loadoutcomes.children.index(q) : q.xpath('order').text.to_i 
+            order_by:  q.xpath('order_by').empty? ? loadoutcomes.children.index(q) : q.xpath('order_by').text.to_i 
           )
         end
         f.close
