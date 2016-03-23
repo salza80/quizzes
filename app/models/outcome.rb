@@ -1,5 +1,6 @@
 class Outcome < ActiveRecord::Base
   belongs_to :quiz
+  validates :order, :title, :points_to, presence: true
 
 
   def self.find_by_points(points)
