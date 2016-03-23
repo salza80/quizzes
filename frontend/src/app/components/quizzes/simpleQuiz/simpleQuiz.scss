@@ -6,4 +6,27 @@ simple-quiz {
     font-weight: bold;
     font-size: 1.5em;
   }
+  .animate-quesiton{
+
+  }
+
+
+  .animate-quesiton.ng-enter, .animate-quesiton.ng-leave {
+    color:red;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:100%;
+    transition:0.5s ease-out all;
+  }
+  .animate-quesiton.ng-enter {
+    top:-100%;
+  }
+  .animate-quesiton.ng-enter-active, .animate-quesiton.ng-leave {
+    top:0;
+  }
+  .animate-quesiton.ng-leave-active {
+    top:100%;
+  }
 }
