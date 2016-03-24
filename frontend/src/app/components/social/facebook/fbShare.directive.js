@@ -3,22 +3,18 @@
 
   angular
     .module('frontend')
-    .directive('fbLike', fbLike);
+    .directive('fbShare', fbShare);
 
   /** @ngInject */
-  function fbLike($timeout) {
+  function fbShare($timeout) {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/components/social/facebook/fbLike.html',
+      templateUrl: 'app/components/social/facebook/fbShare.html',
       scope: {
           pageUrl: '@',
-          layout: '@',
-          action: '@',
-          showFaces: '@',
-          share: '@'
-
+          layout: '@'
       },
-      controller: fbLikeController,
+      controller: fbShareController,
       controllerAs: 'ctrl',
       bindToController: true,
       link: link
@@ -27,17 +23,15 @@
     return directive;
 
     /** @ngInject */
-    function fbLikeController() { 
+    function fbShareController() { 
       // var ctrl = this;
 
     
     }
      /** @ngInject */
     function link(scope, element, attrs) {
-      if (!attrs.layout) { attrs.layout = 'standard'; }
-      if (!attrs.action) { attrs.action = 'like'; }
-      if (!attrs.showFaces) { attrs.showFaces = 'false'; }
-      if (!attrs.share) { attrs.share = 'true'; }
+      if (!attrs.layout) { attrs.layout = 'button'; }
+       
       scope.$watch(
         "ctrl.pageUrl",
         function handleWatchValueChange() {
@@ -51,8 +45,9 @@
       });
 
       function fbRefresh(){
-          FB.XFBML.parse(element.parent()[0]);
+        FB.XFBML.parse(element.parent()[0]);
       }
     }
   }
+
 })();

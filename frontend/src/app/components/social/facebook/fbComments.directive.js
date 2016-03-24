@@ -3,22 +3,19 @@
 
   angular
     .module('frontend')
-    .directive('fbLike', fbLike);
+    .directive('fbComments', fbComments);
 
   /** @ngInject */
-  function fbLike($timeout) {
+  function fbComments($timeout) {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/components/social/facebook/fbLike.html',
+      templateUrl: 'app/components/social/facebook/fbComments.html',
       scope: {
           pageUrl: '@',
-          layout: '@',
-          action: '@',
-          showFaces: '@',
-          share: '@'
-
+          width: '@',
+          numPosts: '@'
       },
-      controller: fbLikeController,
+      controller: fbCommentsController,
       controllerAs: 'ctrl',
       bindToController: true,
       link: link
@@ -27,19 +24,17 @@
     return directive;
 
     /** @ngInject */
-    function fbLikeController() { 
+    function fbCommentsController() { 
       // var ctrl = this;
 
     
     }
      /** @ngInject */
     function link(scope, element, attrs) {
-      if (!attrs.layout) { attrs.layout = 'standard'; }
-      if (!attrs.action) { attrs.action = 'like'; }
-      if (!attrs.showFaces) { attrs.showFaces = 'false'; }
-      if (!attrs.share) { attrs.share = 'true'; }
-      scope.$watch(
-        "ctrl.pageUrl",
+      if (!attrs.width) { attrs.width = '500'; }
+      if (!attrs.numPosts) { attrs.numPosts = '10'; }
+      scope.$watchGroup(
+        ["ctrl.width", "ctrl.numPosts", "ctrl.pageUrl"],
         function handleWatchValueChange() {
           fbRefresh();
         }
@@ -51,8 +46,9 @@
       });
 
       function fbRefresh(){
-          FB.XFBML.parse(element.parent()[0]);
+        FB.XFBML.parse(element.parent()[0]);
       }
     }
   }
+
 })();
