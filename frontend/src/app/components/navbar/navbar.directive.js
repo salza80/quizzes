@@ -11,7 +11,7 @@
       restrict: 'E',
       templateUrl: 'app/components/navbar/navbar.html',
       scope: {
-          activeMenu: '&'
+          activeMenu: '@'
       },
       controller: NavbarController,
       controllerAs: 'ctrl',
@@ -24,7 +24,7 @@
     function NavbarController() { 
       var ctrl = this;
       ctrl.getClass = function(item){
-        if(item === ctrl.activeMenu()){
+        if(item === ctrl.activeMenu){
           return 'active';
         }else {
           return '';
