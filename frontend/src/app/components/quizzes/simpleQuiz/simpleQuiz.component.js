@@ -23,7 +23,6 @@
     ctrl.nextQuestion = nextQuestion;
     ctrl.current_question_no = current_question_no;
     init();
-
     function init() {
       getQuiz();
       if (angular.isDefined(ctrl.resultCode)){
@@ -41,6 +40,17 @@
         ctrl.currentQuestion = quizData.active.questions[currentQuestionIndex];
         ctrl.totalQuestions = ctrl.quiz.questions.length;
       });
+    }
+
+    function fullUrl(){
+      return $location.absUrl();
+    }
+
+    function quizUrl(){
+      var fullUrl = $location.absUrl()
+      var urlNameEndPos = fullUrl.search(ctrl.urlName) + ctrl.urlName.length
+      var quizUrl = fullUrl.substr(0,urlNameEndPos)
+      return quizUrl
     }
 
     function current_question_no(){
