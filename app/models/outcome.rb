@@ -1,6 +1,6 @@
 class Outcome < ActiveRecord::Base
   belongs_to :quiz
-  validates :order, :title, :points_to, presence: true
+  validates :order_by, :title, :points_to, presence: true
   # default_scope {order('points_to DESC')}
 
   def self.find_by_points(points)
