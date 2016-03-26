@@ -6,6 +6,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rspec'
+# require 'support/factory_girl'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -23,6 +24,7 @@ require 'capybara/rspec'
 # require only the support files necessary.
 #
 # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+ Dir[Rails.root.join('spec/support/factory_girl.rb')].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.

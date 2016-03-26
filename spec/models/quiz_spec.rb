@@ -1,9 +1,13 @@
 require 'spec_helper'
 describe ::Quiz do
-  let(:quiz) { FactoryGirl.create :quiz }
+
+  let(:quiz) { create :quiz}
+    # let(:quizzes) do 
+    #   create_list(:quiz, 5)
+    # end
 
   it 'has a valid factory' do
-    expect(quiz.title).to eq('Test quiz one')
+    expect(quiz.title).to eq('Test quiz 1')
   end
 
   it 'should require a title' do

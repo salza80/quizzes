@@ -1,9 +1,9 @@
 require 'spec_helper'
 describe ::Outcome do
-  let(:outcome) { FactoryGirl.create :outcome }
+  let(:outcome) { create :outcome }
 
   it 'has a valid factory' do
-    expect(outcome.title).to eq('Test outcome one')
+    expect(outcome.title).to eq('Test outcome 1')
   end
 
   it 'should require a title' do

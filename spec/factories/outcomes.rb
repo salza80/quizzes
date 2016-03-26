@@ -1,9 +1,9 @@
 FactoryGirl.define do
-  factory :outcome , class: Outcome do |f|
-    f.title "Test outcome one"
-    f.description "This is the first test outcome"
-    f.img_url "test_quiz_one/outcome1.jpg"
-    f.points_to 10
-    f.order_by 1
+  factory :outcome , class: Outcome do
+    sequence(:title) { |n| "Test outcome #{n}" }
+    description "This is a test outcome"
+    img_url "test_quiz_1/outcome.jpg"
+    points_to 10
+    sequence(:order_by) { |n| n }
   end
 end

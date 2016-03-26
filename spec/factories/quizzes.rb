@@ -1,8 +1,8 @@
 FactoryGirl.define do
-  factory :quiz , class: Quiz do |f|
-    f.title "Test quiz one"
-    f.description "This is the first test quiz"
-    f.img_url "test_quiz_one/quiz1.jpg"
-    f.url_name "test_quiz_one"
+  factory :quiz , class: Quiz do
+    sequence(:title) { |n| "Test quiz #{n}" }
+    description "This is a quiz description"
+    img_url "test_quiz_one/quiz.jpg"
+    sequence(:url_name) { |n| "test_quiz_#{n}" }
   end
 end

@@ -1,6 +1,7 @@
 
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
+
 require 'rspec/rails'
 
 
@@ -23,6 +24,9 @@ require 'rspec/rails'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  
+
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
@@ -49,7 +53,6 @@ RSpec.configure do |config|
   config.before(:each) do
     Capybara.current_driver = :selenium
     Capybara.default_max_wait_time = 5
-
   end
 
 # The settings below are suggested to provide a good initial experience
