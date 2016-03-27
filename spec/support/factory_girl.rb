@@ -12,7 +12,7 @@ RSpec.configure do |config|
       DatabaseCleaner.clean
     end
   end
-  config.before(:all) do
+  config.before(:each) do
     FactoryGirl.reload unless FactoryGirl.factories.blank?
   end
 end

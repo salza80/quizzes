@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   root 'home#index'
-  scope '/api', module: 'api' do
+  scope '/api', module: 'api', constraints: { format: 'json' } do
     resources :quizzes, only: [:index]
     get 'quizzes/:url_name', to: 'quizzes#show'
     post 'quizzes/result_code', to: 'quizzes#result_code'
     get 'quizzes/:url_name/outcome/:result_code', to: 'quizzes#outcome'
   end
   # get '/home', to: 'home#index'
+  
   
 
   # The priority is based upon order of creation: first created -> highest priority.

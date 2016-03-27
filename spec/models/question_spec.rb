@@ -1,6 +1,6 @@
 require 'spec_helper'
 describe ::Question do
-  let(:question) { create :question }
+  let(:question) { create :question, title: 'Test question 1' }
 
   it 'has a valid factory' do
     expect(question.title).to eq('Test question 1')
