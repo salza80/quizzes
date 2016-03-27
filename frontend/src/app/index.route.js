@@ -10,7 +10,15 @@
       .when('/', {
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        redirectTo: function(current, path, search){
+          if(search.goto){
+            return "/" + search.goto
+          }
+          else{
+            return "/"
+          }
+        }
       })
       .when('/about', {
         templateUrl: 'app/about/about.html',
