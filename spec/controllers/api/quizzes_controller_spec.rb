@@ -28,7 +28,7 @@ RSpec.describe Api::QuizzesController, :type => :controller do
   end
 
   describe "GET #show" do
-    before do
+    before(:each) do
       create_quizzes
     end
     it "responds successfully with an HTTP 200 status code" do
@@ -67,7 +67,7 @@ RSpec.describe Api::QuizzesController, :type => :controller do
   end
 
   describe "GET #outcome" do
-    before do
+    before(:each) do
       create_quizzes
     end
     it "responds successfully with an HTTP 200 status code" do
