@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   get "/*path" => redirect("/?goto=%{path}")
-  # get '/home', to: 'home#index'
+ 
   
   
 

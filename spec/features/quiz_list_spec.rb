@@ -25,11 +25,6 @@ feature 'Quiz List' do
 
   end
 
-  scenario 'testagain' do
-    quizbuttons = page.all(".panel-footer>a")
-    expect(quizbuttons.count).to eq(2)
-  end
-
   after(:each) do
     Capybara.reset!
   end
