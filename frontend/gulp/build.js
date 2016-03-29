@@ -36,6 +36,7 @@ gulp.task('html', ['inject', 'partials'], function () {
   var htmlFilter = $.filter('*.html', { restore: true });
   var jsFilter = $.filter('**/*.js', { restore: true });
   var cssFilter = $.filter('**/*.css', { restore: true });
+  var indexFilter = $.filter('index.html', { restore: true });
   var assets;
 
 
@@ -66,6 +67,9 @@ gulp.task('html', ['inject', 'partials'], function () {
       conditionals: true
     }))
     .pipe(htmlFilter.restore)
+    .pipe(indexFilter)
+    .pipe($.rename("start.html"))
+    .pipe(indexFilter.restore)
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
     .pipe($.size({ title: path.join(conf.paths.dist, '/'), showFiles: true }));
   });
@@ -100,7 +104,9 @@ gulp.task('clean', function (done) {
     path.join(conf.paths.dist, '/fonts'),
     path.join(conf.paths.dist, '/maps'),
     path.join(conf.paths.dist, '/scripts'),
-    path.join(conf.paths.dist, '/styles')
+    path.join(conf.paths.dist, '/styles'),
+    path.join(conf.paths.dist, '/index.html'),
+    path.join(conf.paths.dist, '/start.html')
     , path.join(conf.paths.tmp, '/')], { force: true }, done);
 });
 
