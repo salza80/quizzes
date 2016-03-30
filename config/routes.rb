@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     post 'quizzes/result_code', to: 'quizzes#result_code'
     get 'quizzes/:url_name/outcome/:result_code', to: 'quizzes#outcome'
   end
-
   get "/*path" => redirect("/?goto=%{path}")
  
   

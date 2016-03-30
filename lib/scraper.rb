@@ -1,5 +1,6 @@
 require 'selenium-webdriver'
 require 'fileutils'
+require 'nokogiri'
 
 class Scraper
   SETTINGS = {dev: {
@@ -21,18 +22,30 @@ class Scraper
 
   def createFile(url)
     page_source = getPage(url)
-     FileUtils::mkdir_p("#{@fileDir}#{url}")
+    FileUtils::mkdir_p("#{@fileDir}#{url}")
     output = File.new("#{@fileDir}#{url}/page.html", "w")
     output.puts(page_source)
     output.close
   end 
 
+  def quit
+    @driver.quit
+  end
+
   private
+
+  def removeScripts(page_source)
+    nkpage = Nokogiri::HTML(page_source)
+    nkpage.css('script').each do |element|
+      element.unlink
+    end
+    nkpage.to_html
+  end
 
   def getPage(url)
     @driver.get("#{@locations[:domain_url]}#{url}")
     page_source = @driver.page_source
-    @driver.quit
+    page_source = removeScripts(page_source)
     page_source
   end
 

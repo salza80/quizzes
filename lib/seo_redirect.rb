@@ -5,9 +5,9 @@ class SeoRedirect
     @app = app
   end
 
-  # def redirect(location)
-  #     [301, {'Location' => location, 'Content-Type' => 'text/html'}, ['seo version']]
-  # end
+  def redirect(location)
+      [301, {'Location' => location, 'Content-Type' => 'text/html'}, ['seo version']]
+  end
 
   def call(env)
     request = Rack::Request.new(env)
@@ -17,10 +17,14 @@ class SeoRedirect
     puts "params: #{request.params}"
 
     # puts query_hash
-    if USER_AGENT_STRINGS.include?(request.user_agent) || request.params.has_key?('_escaped_fragment_')
+    if USER_AGENT_STRINGS.include?(request.user_agent) 
+      puts 'WILL REDIRECT TO SEO STATIC PAGE'
+      @app.call(env)
+    elsif request.params.has_key?('_escaped_fragment_')
       # should ignore google crawler
         puts 'WILL REDIRECT TO SEO STATIC PAGE'
-        @app.call(env)
+        redirect("/static/dev#{request.params['_escaped_fragment_']}/page.html")
+        # @app.call(env)
     else
       # return redirect(redirects[req.path]) if redirects.include?(req.path)
       @app.call(env)
