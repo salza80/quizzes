@@ -18,12 +18,12 @@ module Api
 
     # finish the quiz, return result code
     def result_code
-      @result = Base64.urlsafe_encode64(params[:points].to_s)
+      @result = ResultEncoder.new(params[:points]).encoded
     end
 
     # get outcome based on points
     def outcome
-      points =  Integer(Base64.urlsafe_decode64(params[:result_code]))
+      points = ResultEncoder.new(params[:result_code]).decoded
       quiz =  Quiz.find_by(url_name: params[:url_name])
       @outcome = quiz.outcomes.find_by_points(points)
     end

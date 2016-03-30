@@ -79,8 +79,8 @@ RSpec.describe Api::QuizzesController, :type => :controller do
 
     it "renders the outcome template" do
       # Mw== is 3
-      get :result_code, {url_name: 'test_quiz_1', result_code: "Mw=="}
-      expect(response).to render_template("result_code")
+      get :outcome, {url_name: 'test_quiz_1', result_code: "Mw=="}
+      expect(response).to render_template("outcome")
     end
   end
 end
