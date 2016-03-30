@@ -21,6 +21,5 @@ describe ::Question do
     create_quizzes
     q =Question.all.first
     expect(q.max_points).to eq(1)
-
   end
 end

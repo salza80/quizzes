@@ -9,7 +9,7 @@ class Scraper
                     },
               prod: {
                       domain_url: "http://mydomain.com/",
-                      output_dir: "public/static/dev/"
+                      output_dir: "public/static/prod/"
                     }
               }
 
@@ -20,7 +20,9 @@ class Scraper
     setupdir
   end
 
-  def createFile(url)
+  def createFile(url, options={})
+    over_write = options[:over_write] || false
+    return if over_write==false && File.exist?("#{@fileDir}#{url}/page.html")
     page_source = getPage(url)
     FileUtils::mkdir_p("#{@fileDir}#{url}")
     output = File.new("#{@fileDir}#{url}/page.html", "w")
