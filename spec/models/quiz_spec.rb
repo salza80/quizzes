@@ -1,4 +1,5 @@
 require 'spec_helper'
+require "support/setup_data"
 describe ::Quiz do
 
   let(:quiz) { create :quiz, title: 'Test quiz 1'}
@@ -30,5 +31,10 @@ describe ::Quiz do
     quiz.url_name = ''
     quiz.valid?
     expect(quiz.errors[:url_name].size).to eq(1)
+  end
+  it 'should return max points for a quiz' do
+    create_quizzes
+    q =Quiz.all.first
+    expect(q.max_points).to eq(15)
   end
 end
