@@ -4,7 +4,7 @@
   </div>
   <img class="img-responsive img-thumbnail center-block" 
        ng-show = "ctrl.question.img_url > ''" 
-       src="assets/images/{{ctrl.question.img_url}}" 
+       ng-src="{{ctrl.question && 'assets/images/' + ctrl.question.img_url || ''}}"
        alt="{{ctrl.question.img_url}}" />
   <div class="question-description" ng-show="ctrl.question.description > ''">
     {{ctrl.question.description}}
