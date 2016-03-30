@@ -1,6 +1,16 @@
 <div class="question">
   <div class="question-title well">
-   Q.{{ctrl.question.order}}: {{ctrl.question.title}}
+    <div class="row">
+      <div class="col-md-10 col-xs-12 quiz-title">
+        Q. {{ctrl.question.title}}
+      </div>
+       <div class="col-md-2 col-xs-12 text-right">
+        <span>
+          Question 
+          <span class='no-wrap'>{{ctrl.questionNo}} of {{ctrl.totalQuestions}}</span>
+        </span>
+      </div>
+    </div>
   </div>
   <img class="img-responsive img-thumbnail center-block" 
        ng-show = "ctrl.question.img_url > ''" 

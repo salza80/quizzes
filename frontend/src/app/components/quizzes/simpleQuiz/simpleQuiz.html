@@ -4,18 +4,12 @@
       <div class="col-md-10 col-xs-12 quiz-title">
         {{ctrl.quiz.title}}
       </div>
-      <div class="col-md-2 col-xs-12 text-right" ng-show="ctrl.showQuestions">
-        <span>
-          Question 
-          <span class='no-wrap'>{{ctrl.current_question_no()}} of {{ctrl.totalQuestions}}</span>
-        </span>
-      </div>
     </div>
   </div>
   <div class="panel-body">
     <div class="question-container">
       <div class="question animate-quesiton" ng-show="ctrl.showQuestions" ng-animate-swap="ctrl.currentQuestion.title">
-        <quiz-question question="ctrl.currentQuestion" on-answered="ctrl.nextQuestion(answer)"></quiz-question>
+        <quiz-question question="ctrl.currentQuestion" question-no="ctrl.current_question_no()" total-questions="ctrl.totalQuestions" on-answered="ctrl.nextQuestion(answer)"></quiz-question>
       </div>
       <div class="outcome"  ng-show="ctrl.showOutcome">
         <quiz-outcome outcome="ctrl.outcome"></quiz-outcome>
