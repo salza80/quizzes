@@ -12,17 +12,17 @@ class SeoRedirect
   def call(env)
     request = Rack::Request.new(env)
     query_hash = Rack::Utils.parse_query(request.path)
-    puts "query_hash: #{query_hash}"
-    puts "user agent: #{request.user_agent}"
-    puts "params: #{request.params}"
+    Rails.logger.info "query_hash: #{query_hash}"
+    Rails.logger.info "user agent: #{request.user_agent}"
+    Rails.logger.info "params: #{request.params}"
 
     # puts query_hash
     if USER_AGENT_STRINGS.include?(request.user_agent) 
-      puts 'WILL REDIRECT TO SEO STATIC PAGE'
+      Rails.logger.info 'WILL REDIRECT TO SEO STATIC PAGE'
       @app.call(env)
     elsif request.params.has_key?('_escaped_fragment_')
       # should ignore google crawler
-        puts 'WILL REDIRECT TO SEO STATIC PAGE'
+        Rails.logger.info 'WILL REDIRECT TO SEO STATIC PAGE'
         redirect("/static/dev#{request.params['_escaped_fragment_']}/page.html")
         # @app.call(env)
     else
