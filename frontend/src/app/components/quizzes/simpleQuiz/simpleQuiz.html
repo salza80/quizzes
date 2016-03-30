@@ -1,10 +1,6 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <div class="row">
-      <div class="col-md-10 col-xs-12 quiz-title">
-        {{ctrl.quiz.title}}
-      </div>
-    </div>
+    {{ctrl.quiz.title}}
   </div>
   <div class="panel-body">
     <div class="question-container">
@@ -13,15 +9,14 @@
       </div>
       <div class="outcome"  ng-show="ctrl.showOutcome">
         <quiz-outcome outcome="ctrl.outcome"></quiz-outcome>
-        <div>
+        <!-- <div>
           <fb-share page-url="{{ctrl.quizUrl()}}"></fb-share>
           <fb-like page-url="{{ctrl.fullUrl()}}" share="false"></fb-like>
-        </div>
+        </div> -->
         <div>
           <a href="/quiz/{{ctrl.urlName}}" class="btn btn-primary center-block" role="button">Retake Quiz!</a>
-        <div>
+        </div>
       </div>
-
     </div>
   </div>
 </div>
