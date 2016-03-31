@@ -1,12 +1,11 @@
 {
   "name": "frontend",
   "version": "0.0.0",
-  "dependencies": {},
   "scripts": {
     "test": "gulp test",
     "postinstall": "cd frontend/ && bower install && gulp clean && gulp build"
   },
-  "Dependencies": {
+  "dependencies": {
     "bower": "~1.4.1",
     "browser-sync": "~2.9.11",
     "browser-sync-spa": "~1.0.3",
