@@ -19,9 +19,11 @@
     var answers = [];
     ctrl.showQuestions = false;
     ctrl.showOutcome = false;
+    ctrl.showStart = false;
     ctrl.quiz = {};
     ctrl.nextQuestion = nextQuestion;
     ctrl.current_question_no = current_question_no;
+    ctrl.begin = begin
     init();
     function init() {
       getQuiz();
@@ -29,7 +31,7 @@
         getOutcome(ctrl.urlName, ctrl.resultCode);
         ctrl.showOutcome=true;
       } else {
-        ctrl.showQuestions = true;
+        ctrl.showStart = true;
       }
     }
 
@@ -40,6 +42,11 @@
         ctrl.currentQuestion = quizData.active.questions[currentQuestionIndex];
         ctrl.totalQuestions = ctrl.quiz.questions.length;
       });
+    }
+
+    function begin(){
+      ctrl.showStart=false;
+      ctrl.showQuestions = true;
     }
 
     function fullUrl(){
@@ -91,7 +98,6 @@
       });
     }
   }
-
   angular
   .module('frontend')
   .component('simpleQuiz', simpleQuiz);

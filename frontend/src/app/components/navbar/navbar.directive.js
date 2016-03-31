@@ -21,15 +21,21 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController() { 
+    function NavbarController($location) { 
       var ctrl = this;
-      ctrl.getClass = function(item){
+      ctrl.GetClass= GetClass
+      ctrl.siteDomain = siteDomain
+      function GetClass(item){
         if(item === ctrl.activeMenu){
           return 'active';
         }else {
           return '';
         }
       };
+
+      function siteDomain(){
+        return $location.host();
+      }
       
     }
   }

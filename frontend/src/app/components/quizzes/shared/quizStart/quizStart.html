@@ -1,0 +1,12 @@
+<div class="quiz-start">
+    <img class="img-responsive img-thumbnail" 
+      ng-show = "ctrl.quiz.img_url > ''" 
+      ng-src="{{ctrl.quiz && 'assets/images/' + ctrl.quiz.img_url || ''}}"
+      alt="{{ctrl.quiz.img_url}}" />
+   <div class="quiz-description">
+    {{ctrl.quiz.description}}
+   </div>
+   <div>
+       <button type="button" class="btn btn-success" ng-click="ctrl.onBegin()">Begin Now!</button>
+   </div>
+</div>

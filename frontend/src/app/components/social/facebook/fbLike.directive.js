@@ -34,10 +34,10 @@
     }
      /** @ngInject */
     function link(scope, element, attrs) {
-      if (!attrs.layout) { attrs.layout = 'standard'; }
+      if (!attrs.layout) { attrs.layout = 'button_count'; }
       if (!attrs.action) { attrs.action = 'like'; }
       if (!attrs.showFaces) { attrs.showFaces = 'false'; }
-      if (!attrs.share) { attrs.share = 'true'; }
+      if (!attrs.share) { attrs.share = 'false'; }
       scope.$watch(
         "ctrl.pageUrl",
         function handleWatchValueChange() {

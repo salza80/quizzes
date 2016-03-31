@@ -1,24 +1,24 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
-    {{ctrl.quiz.title}}
+    <div class="quiz-title">
+      {{ctrl.quiz.title}}
+    </div>
   </div>
   <div class="panel-body">
-    <div class="question-container">
-      <div class="question animate-quesiton" ng-show="ctrl.showQuestions" ng-animate-swap="ctrl.currentQuestion.title">
-        <quiz-question question="ctrl.currentQuestion" question-no="ctrl.current_question_no()" total-questions="ctrl.totalQuestions" on-answered="ctrl.nextQuestion(answer)"></quiz-question>
+    <div ng-show="ctrl.showStart">
+       <quiz-start quiz="ctrl.quiz" on-begin="ctrl.begin()">
+    </div>
+    <div class="question animate-quesiton" ng-show="ctrl.showQuestions" ng-animate-swap="ctrl.currentQuestion.title">
+      <quiz-question question="ctrl.currentQuestion" question-no="ctrl.current_question_no()" total-questions="ctrl.totalQuestions" on-answered="ctrl.nextQuestion(answer)"></quiz-question>
+    </div>
+    <div class="outcome"  ng-show="ctrl.showOutcome">
+      <quiz-outcome outcome="ctrl.outcome"></quiz-outcome>
+      <div class="share-buttons">
+        <fb-share page-url="{{ctrl.quizUrl()}}"></fb-share>
       </div>
-      <div class="outcome"  ng-show="ctrl.showOutcome">
-        <quiz-outcome outcome="ctrl.outcome"></quiz-outcome>
-        <!-- <div>
-          <fb-share page-url="{{ctrl.quizUrl()}}"></fb-share>
-          <fb-like page-url="{{ctrl.fullUrl()}}" share="false"></fb-like>
-        </div> -->
-        <div>
-          <a href="/quiz/{{ctrl.urlName}}" class="btn btn-primary center-block" role="button">Retake Quiz!</a>
-        </div>
+      <div>
+        <a href="/quiz/{{ctrl.urlName}}" class="btn btn-primary center-block" role="button">Retake Quiz!</a>
       </div>
     </div>
   </div>
 </div>
-
-
