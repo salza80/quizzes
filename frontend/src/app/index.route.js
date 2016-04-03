@@ -9,6 +9,11 @@
     $routeProvider
       .when('/', {
         templateUrl: 'app/main/main.html',
+        resolve: {
+          config: ['config', function(config) {
+            return config.initConfig();
+          }]
+        }, 
         controller: 'MainController',
         controllerAs: 'main',
         redirectTo: function(current, path, search){

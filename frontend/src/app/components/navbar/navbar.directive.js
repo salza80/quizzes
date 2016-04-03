@@ -31,7 +31,7 @@
         }else {
           return '';
         }
-      };
+      }
 
       function siteDomain(){
         return $location.host();

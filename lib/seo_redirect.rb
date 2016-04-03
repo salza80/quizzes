@@ -12,6 +12,7 @@ class SeoRedirect
   def call(env)
     request = Rack::Request.new(env)
     query_hash = Rack::Utils.parse_query(request.path)
+    Rails.logger.info "request.path: #{request.path}"
     Rails.logger.info "query_hash: #{query_hash}"
     Rails.logger.info "user agent: #{request.user_agent}"
     Rails.logger.info "params: #{request.params}"
