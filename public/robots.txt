@@ -6,3 +6,4 @@
 
 User-agent: *
 Disallow: /static/
+Disallow: /api/

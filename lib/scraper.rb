@@ -8,7 +8,7 @@ class Scraper
                       output_dir: "public/static/dev/"
                     },
               prod: {
-                      domain_url: "http://mydomain.com/",
+                      domain_url: "http://quizzes1.herokuapp.com/",
                       output_dir: "public/static/prod/"
                     }
               }
@@ -46,6 +46,13 @@ class Scraper
 
   def getPage(url)
     @driver.get("#{@locations[:domain_url]}#{url}")
+    wait = Selenium::WebDriver::Wait.new(:timeout => 10) # seconds
+    begin
+      ele = wait.until { @driver.find_element(:class => "navbar-header") }
+    rescue
+      puts "failed url: #{@locations[:domain_url]}#{url}" 
+      return ""
+    end
     page_source = @driver.page_source
     page_source = removeScripts(page_source)
     page_source

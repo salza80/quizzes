@@ -7,7 +7,7 @@ module Api
 
     def allUrls
       @allUrls = [];
-      @allUrls << "/"
+      @allUrls << ""
 
       Quiz.all.find_each do |q|
        @allUrls << "quiz/#{q.url_name}/"

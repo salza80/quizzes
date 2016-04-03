@@ -38,9 +38,12 @@ namespace :static do
   def  scrape_pages(env, over_write)
     urls = getURLS(env)
     s = Scraper.new(env)
-    urls.each do |q|
-      s.createFile(q['url'], { over_write: over_write })
+    begin
+      urls.each do |q|
+        s.createFile(q['url'], { over_write: over_write })
+      end
+    ensure
+      s.quit
     end
-    s.quit
   end
 end
