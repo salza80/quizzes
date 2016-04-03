@@ -27,16 +27,31 @@
       })
       .when('/about', {
         templateUrl: 'app/about/about.html',
+        resolve: {
+          config: ['config', function(config) {
+            return config.initConfig();
+          }]
+        }, 
         controller: 'AboutController',
         controllerAs: 'about'
       })
       .when('/quiz/:quizName', {
         templateUrl: 'app/quiz/quiz.html',
+        resolve: {
+          config: ['config', function(config) {
+            return config.initConfig();
+          }]
+        }, 
         controller: 'QuizController',
         controllerAs: 'quiz'
       })
       .when('/quiz/:quizName/result/:resultCode', {
         templateUrl: 'app/quiz/quiz.html',
+        resolve: {
+          config: ['config', function(config) {
+            return config.initConfig();
+          }]
+        }, 
         controller: 'QuizController',
         controllerAs: 'quiz'
       })

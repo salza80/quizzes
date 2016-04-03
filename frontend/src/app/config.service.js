@@ -7,6 +7,7 @@
 
   /** @ngInject */
   function config($http, $window, $q) {
+    var initialised  = false;
     var config = {};
     config.env = {};
 
@@ -35,11 +36,17 @@
    
    
     function initConfig() {
+      var deferred = $q.defer();
+      //return imediately if already initialised
+      if(initialised){
+        return deferred.resolve();
+      }
       //get config variables and init facebook before resolve
       var deferred = $q.defer();
       $http.get('api/config.json').then(function(response){
         config.env = response.data;
         initFacebook();
+        initialised = true;
         deferred.resolve();
       });
       return deferred.promise;
