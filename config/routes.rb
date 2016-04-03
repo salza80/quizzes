@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     post 'quizzes/result_code', to: 'quizzes#result_code'
     get 'quizzes/:url_name/outcome/:result_code', to: 'quizzes#outcome'
     resources :config, only: [:index]
+    get 'config/allUrls', to: 'config#allUrls'
   end
   get "/*path" => redirect("/?goto=%{path}")
  
