@@ -16,15 +16,21 @@ class SeoRedirect
     Rails.logger.info "query_hash: #{query_hash}"
     Rails.logger.info "user agent: #{request.user_agent}"
     Rails.logger.info "params: #{request.params}"
-
+    Rails.logger.info "environment #{ENV["RACK_ENV"]}"
+    staticfolder = ""
+    if ENV["RACK_ENV"] == "production"
+      staticfolder = "prod"
+    elsif ENV["RACK_ENV"]
+      staticfolder = "dev"
+    end
     # puts query_hash
     if USER_AGENT_STRINGS.include?(request.user_agent) 
       Rails.logger.info 'WILL REDIRECT TO SEO STATIC PAGE'
-      @app.call(env)
+     redirect("/static/#{staticfolder}#{request.path}/page.html")
     elsif request.params.has_key?('_escaped_fragment_')
       # should ignore google crawler
         Rails.logger.info 'WILL REDIRECT TO SEO STATIC PAGE'
-        redirect("/static/dev#{request.params['_escaped_fragment_']}/page.html")
+        redirect("/static/#{staticfolder}#{request.params['_escaped_fragment_']}/page.html")
         # @app.call(env)
     else
       # return redirect(redirects[req.path]) if redirects.include?(req.path)
