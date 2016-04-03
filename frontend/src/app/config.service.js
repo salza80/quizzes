@@ -42,7 +42,6 @@
         return deferred.resolve();
       }
       //get config variables and init facebook before resolve
-      var deferred = $q.defer();
       $http.get('api/config.json').then(function(response){
         config.env = response.data;
         initFacebook();
