@@ -26,7 +26,7 @@ class SeoRedirect
     # puts query_hash
     if USER_AGENT_STRINGS.include?(request.user_agent) 
       Rails.logger.info 'WILL REDIRECT TO SEO STATIC PAGE'
-     redirect("/static/#{staticfolder}#{request.path}/page.html")
+      redirect("/static/#{staticfolder}#{request.path}/page.html")
     elsif request.params.has_key?('_escaped_fragment_')
       # should ignore google crawler
         Rails.logger.info 'WILL REDIRECT TO SEO STATIC PAGE'
