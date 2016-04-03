@@ -38,15 +38,15 @@
       //get config variables and init facebook before resolve
       var deferred = $q.defer();
       $http.get('api/config.json').then(function(response){
-        config.env = response.data
+        config.env = response.data;
         initFacebook();
         deferred.resolve();
-      })
+      });
       return deferred.promise;
     }
 
     function getConfig() {
-      return config.env
+      return config.env;
     }
   }
 })();

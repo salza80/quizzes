@@ -18,10 +18,10 @@
         controllerAs: 'main',
         redirectTo: function(current, path, search){
           if(search.goto){
-            return "/" + search.goto
+            return "/" + search.goto;
           }
           else{
-            return "/"
+            return "/";
           }
         }
       })

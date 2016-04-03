@@ -23,8 +23,8 @@
     /** @ngInject */
     function NavbarController($location) { 
       var ctrl = this;
-      ctrl.GetClass= GetClass
-      ctrl.siteDomain = siteDomain
+      ctrl.GetClass= GetClass;
+      ctrl.siteDomain = siteDomain;
       function GetClass(item){
         if(item === ctrl.activeMenu){
           return 'active';

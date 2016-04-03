@@ -12,7 +12,7 @@
   };
 
   /** @ngInject */
-  function simpleQuizController(quiz, $location) {
+  function simpleQuizController(quiz, $location, imagePreloader) {
     var ctrl = this;
     var currentQuestionIndex = 0;
     var quizData= {};
@@ -23,7 +23,7 @@
     ctrl.quiz = {};
     ctrl.nextQuestion = nextQuestion;
     ctrl.current_question_no = current_question_no;
-    ctrl.begin = begin
+    ctrl.begin = begin;
     init();
     function init() {
       getQuiz();
@@ -41,6 +41,7 @@
         ctrl.quiz = quizData.active;
         ctrl.currentQuestion = quizData.active.questions[currentQuestionIndex];
         ctrl.totalQuestions = ctrl.quiz.questions.length;
+        preloadImages();
       });
     }
 
@@ -49,19 +50,35 @@
       ctrl.showQuestions = true;
     }
 
+    function preloadImages(){
+      var imagePreload = [];
+      for (var i=0; i < quizData.active.questions.length; i++){
+        if(quizData.active.questions[i].img_url !== ''){
+          imagePreload[i] = 'assets/images/' + quizData.active.questions[i].img_url;
+        }
+      }
+      imagePreloader.preloadImages( imagePreload ).then(function() {
+           // console.log('success');
+        },
+        function() {
+            // console.log('failed atlease one image');
+        }
+      );
+    }
+
     function fullUrl(){
       return $location.absUrl();
     }
 
     function quizUrl(){
-      var fullUrl = $location.absUrl()
-      var urlNameEndPos = fullUrl.search(ctrl.urlName) + ctrl.urlName.length
-      var quizUrl = fullUrl.substr(0,urlNameEndPos)
-      return quizUrl
+      var fullUrl = $location.absUrl();
+      var urlNameEndPos = fullUrl.search(ctrl.urlName) + ctrl.urlName.length;
+      var quizUrl = fullUrl.substr(0,urlNameEndPos);
+      return quizUrl;
     }
 
     function current_question_no(){
-      return currentQuestionIndex + 1
+      return currentQuestionIndex + 1;
     }
 
     function nextQuestion(answer){
