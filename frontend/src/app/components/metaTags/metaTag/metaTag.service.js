@@ -44,12 +44,13 @@
 
     }
 
-    function updateTag(name, description){
+    function updateTag(name, value){
       var tag = getTag(name);
-      tag.tcontent = description;
+      tag.tcontent = value;
     }
 
     function getTags(){
+      console.log(data.metaTags)
       return data.metaTags
     }
   }

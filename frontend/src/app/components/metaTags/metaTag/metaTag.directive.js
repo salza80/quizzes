@@ -16,9 +16,17 @@
 
     return directive;
 
-    function metaTagLink(scope, element, attrs){   
-      var mtag= metaTag.getTag(attrs.name);
-      element.attr('content', mtag.tcontent);   
+    function metaTagLink(scope, element, attrs){ 
+      var mtag =  metaTag.getTag(attrs.name);
+      function updateContent(content){
+        // var mtag = metaTag.getTag(attrs.name);
+        element.attr('content', mtag.tcontent);
+        console.log('content updated')
+      }
+      updateContent()
+
+
+      scope.$watch(metaTag.getTags, function(){ console.log('here')})   
     }
   }
 
