@@ -27,12 +27,6 @@
     init();
     function init() {
       getQuiz();
-      if (angular.isDefined(ctrl.resultCode)){
-        getOutcome(ctrl.urlName, ctrl.resultCode);
-        ctrl.showOutcome=true;
-      } else {
-        ctrl.showStart = true;
-      }
     }
 
     function getQuiz(){
@@ -41,9 +35,29 @@
         ctrl.quiz = quizData.active;
         ctrl.currentQuestion = quizData.active.questions[currentQuestionIndex];
         ctrl.totalQuestions = ctrl.quiz.questions.length;
-        metaTag.updateTag('description', quizData.active.title)
         preloadImages();
+        if (angular.isDefined(ctrl.resultCode)){
+          getOutcome(ctrl.urlName, ctrl.resultCode);
+          ctrl.showOutcome=true;
+        } else {
+          setQuizMetaTags();
+          ctrl.showStart = true;
+        }
       });
+    }
+
+    function setQuizMetaTags(){
+      metaTag.updateTag('description', quizData.active.title);
+      metaTag.updateTag('og:title', quizData.active.title);
+      metaTag.updateTag('og:image', quizUrl() + '/assets/images/' + quizData.active.img_url);
+      metaTag.updateTag('og:description', quizData.active.description);
+    }
+
+    function setOutcomeMetaTags(){
+      metaTag.updateTag('description', quizData.active.title);
+      metaTag.updateTag('og:title', quizData.active.title);
+      metaTag.updateTag('og:image', quizUrl() + '/assets/images/' + quizData.outcome.img_url);
+      metaTag.updateTag('og:description', quizData.outcome.description);
     }
 
     function begin(){
@@ -113,6 +127,7 @@
       quizData = quiz.getOutcome(urlName, resultCode);
       quizData.outcome.$promise.then(function(data){
         ctrl.outcome = quizData.outcome;
+        setOutcomeMetaTags();
       });
     }
   }

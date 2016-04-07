@@ -24,14 +24,14 @@
     this.getTag = getTag;
 
     function findTag(name){
-      var tag = undefined;
+      var tag;
       for (var i=0; i<data.metaTags.length; i++){
         if (data.metaTags[i].name === name){
-          tag = data.metaTags[i]
+          tag = data.metaTags[i];
         }
       }
       if(tag === undefined){
-        tag = addTag(name)
+        tag = addTag(name);
       }
       return tag;
     }
@@ -40,8 +40,8 @@
       var tag =   {
           name: name,
           tcontent: "" 
-        }
-      data.metaTags.push(tag)
+        };
+      data.metaTags.push(tag);
       return tag;
     }
 

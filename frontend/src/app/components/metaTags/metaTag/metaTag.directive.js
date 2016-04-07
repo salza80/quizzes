@@ -17,16 +17,16 @@
     return directive;
 
     function metaTagLink(scope, element, attrs){ 
-    
-      function updateContent(content){
+      function updateContent(){
         var mtag =  metaTag.getTag(attrs.name);
         element.attr('content', mtag.tcontent);
       }
-      updateContent()
+      metaTag.updateTag(attrs.name, attrs.content) ;
+      // updateContent()
 
-      scope.$watch(function(){return metaTag.getTag(attrs.name)}, function(){ 
+      scope.$watch(function(){return metaTag.getTag(attrs.name);}, function(){ 
         updateContent();
-      }, true)  
+      }, true); 
     }
   }
 
