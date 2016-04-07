@@ -49,14 +49,14 @@
     function setQuizMetaTags(){
       metaTag.updateTag('description', quizData.active.title);
       metaTag.updateTag('og:title', quizData.active.title);
-      metaTag.updateTag('og:image', quizUrl() + '/assets/images/' + quizData.active.img_url);
+      metaTag.updateTag('og:image', domainUrl() + '/assets/images/' + quizData.active.img_url);
       metaTag.updateTag('og:description', quizData.active.description);
     }
 
     function setOutcomeMetaTags(){
       metaTag.updateTag('description', quizData.active.title);
       metaTag.updateTag('og:title', quizData.active.title);
-      metaTag.updateTag('og:image', quizUrl() + '/assets/images/' + quizData.outcome.img_url);
+      metaTag.updateTag('og:image', domainUrl() + '/assets/images/' + quizData.outcome.img_url);
       metaTag.updateTag('og:description', quizData.outcome.description);
     }
 
@@ -90,6 +90,13 @@
       var urlNameEndPos = fullUrl.search(ctrl.urlName) + ctrl.urlName.length;
       var quizUrl = fullUrl.substr(0,urlNameEndPos);
       return quizUrl;
+    }
+
+    function domainUrl(){
+      var fullUrl = $location.absUrl();
+      var pathStartPos = fullUrl.search($location.path())
+      var domainUrl = fullUrl.substr(0,pathStartPos);
+      return domainUrl;
     }
 
     function current_question_no(){
