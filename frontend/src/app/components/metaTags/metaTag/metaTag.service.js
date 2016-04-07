@@ -23,24 +23,30 @@
     this.getTags = getTags;
     this.getTag = getTag;
 
+    function findTag(name){
+      var tag = undefined;
+      for (var i=0; i<data.metaTags.length; i++){
+        if (data.metaTags[i].name === name){
+          tag = data.metaTags[i]
+        }
+      }
+      if(tag === undefined){
+        tag = addTag(name)
+      }
+      return tag;
+    }
 
     function addTag(name){
-      data.metaTags.push(
-        {
+      var tag =   {
           name: name,
           tcontent: "" 
         }
-      )
+      data.metaTags.push(tag)
+      return tag;
     }
 
     function getTag(name){
-     var filtered = data.metaTags.filter(function isBigEnough(value) {
-      return value.name == name;
-      })
-      if (filtered.length == 0) {
-        addTag(name);
-      }
-      return filtered[0]
+     return findTag(name);
 
     }
 
@@ -50,8 +56,7 @@
     }
 
     function getTags(){
-      console.log(data.metaTags)
-      return data.metaTags
+      return data.metaTags;
     }
   }
 })();

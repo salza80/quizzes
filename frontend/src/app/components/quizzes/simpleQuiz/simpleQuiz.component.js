@@ -42,7 +42,6 @@
         ctrl.currentQuestion = quizData.active.questions[currentQuestionIndex];
         ctrl.totalQuestions = ctrl.quiz.questions.length;
         metaTag.updateTag('description', quizData.active.title)
-        console.log(metaTag.getTag('description'))
         preloadImages();
       });
     }
