@@ -51,6 +51,7 @@
       metaTag.updateTag('og:title', quizData.active.title);
       metaTag.updateTag('og:image', domainUrl() + '/assets/images/' + quizData.active.img_url);
       metaTag.updateTag('og:description', quizData.active.description);
+      metaTag.updateTag('og:url', fullUrl());
     }
 
     function setOutcomeMetaTags(){
@@ -58,6 +59,7 @@
       metaTag.updateTag('og:title', quizData.active.title);
       metaTag.updateTag('og:image', domainUrl() + '/assets/images/' + quizData.outcome.img_url);
       metaTag.updateTag('og:description', quizData.outcome.description);
+      metaTag.updateTag('og:url', fullUrl());
     }
 
     function begin(){
