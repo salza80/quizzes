@@ -25,7 +25,7 @@ class SeoRedirect
       staticfolder = "dev"
     end
     # puts query_hash
-    if USER_AGENT_STRINGS.include?(request.user_agent) 
+    if USER_AGENT_STRINGS.include?(request.user_agent) and not request.path.include? "."
       Rails.logger.info 'WILL REDIRECT TO SEO STATIC PAGE'
       redirect("/static/#{staticfolder}#{request.path}/page.html")
     elsif request.params.has_key?('_escaped_fragment_')
