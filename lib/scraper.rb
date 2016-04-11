@@ -46,9 +46,10 @@ class Scraper
 
   def getPage(url)
     @driver.get("#{@locations[:domain_url]}#{url}")
-    wait = Selenium::WebDriver::Wait.new(:timeout => 10) # seconds
+    wait = Selenium::WebDriver::Wait.new(:timeout => 15) # seconds
     begin
       ele = wait.until { @driver.find_element(:class => "navbar-header") }
+      sleep 1
     rescue
       puts "failed url: #{@locations[:domain_url]}#{url}" 
       return ""
