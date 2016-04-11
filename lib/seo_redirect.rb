@@ -17,6 +17,7 @@ class SeoRedirect
     Rails.logger.info "user agent: #{request.user_agent}"
     Rails.logger.info "params: #{request.params}"
     Rails.logger.info "environment #{ENV["RACK_ENV"]}"
+    Rails.logger.info "Content-Type #{request.content_type}"
     staticfolder = ""
     if ENV["RACK_ENV"] == "production"
       staticfolder = "prod"
