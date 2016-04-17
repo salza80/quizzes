@@ -44,6 +44,20 @@ class Scraper
     nkpage.to_html
   end
 
+  def removeContent(page_source)
+    nkpage = Nokogiri::HTML(page_source)
+    nkpage.css('body>div').each do |element| 
+      element.unlink
+    end
+    nkpage.css('link').each do |element|
+      element.unlink
+    end
+    nkpage.css('style').each do |element|
+      element.unlink
+    end
+    nkpage.to_html
+  end
+
   def getPage(url)
     @driver.get("#{@locations[:domain_url]}#{url}")
     wait = Selenium::WebDriver::Wait.new(:timeout => 15) # seconds
@@ -56,6 +70,7 @@ class Scraper
     end
     page_source = @driver.page_source
     page_source = removeScripts(page_source)
+    page_source = removeContent(page_source)
     page_source
   end
 
