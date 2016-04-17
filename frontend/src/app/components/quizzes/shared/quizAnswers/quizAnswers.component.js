@@ -3,7 +3,7 @@
   var quizAnswers = {
       templateUrl: 'app/components/quizzes/shared/quizAnswers/quizAnswers.html',
       bindings: {
-          answers: '=',
+          answers: '<',
           onAnswered: '&'
       },
       controller: quizAnswersController,

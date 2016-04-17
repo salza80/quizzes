@@ -6,7 +6,7 @@
       .service('metaTag', metaTag);
 
   /** @ngInject */
-  function metaTag() {
+  function metaTag($location) {
     var data = {};
     data.metaTags = [
       { 
@@ -19,6 +19,9 @@
       }
     ];
 
+    this.fullUrl = fullUrl;
+    this.domainUrl = domainUrl;
+
     this.updateTag = updateTag;
     this.getTags = getTags;
     this.getTag = getTag;
@@ -30,7 +33,7 @@
           tag = data.metaTags[i];
         }
       }
-      if(tag === undefined){
+      if(angular.isUndefined(tag)){
         tag = addTag(name);
       }
       return tag;
@@ -58,5 +61,17 @@
     function getTags(){
       return data.metaTags;
     }
+
+    function fullUrl(){
+      return $location.absUrl();
+    }
+
+    function domainUrl(){
+      var fullUrl = $location.absUrl();
+      var pathStartPos = fullUrl.search($location.path());
+      var domainUrl = fullUrl.substr(0,pathStartPos);
+      return domainUrl;
+    }
+
   }
 })();

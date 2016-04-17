@@ -1,5 +1,6 @@
 <div class="outcome-box">
-  <h2>{{ctrl.outcome.title}}</h2>
+  <h2>{{ctrl.resultTitle()}}</h2>
+  <h3>{{ctrl.outcome.title}}</h3>
   <img class="img-responsive img-thumbnail center-block" 
      ng-src="{{ctrl.outcome && 'assets/images/' + ctrl.outcome.img_url || ''}}"
      alt="{{ctrl.outcome.img_url}}" />

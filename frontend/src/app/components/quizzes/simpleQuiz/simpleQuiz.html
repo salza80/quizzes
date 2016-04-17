@@ -12,7 +12,7 @@
       <quiz-question question="ctrl.currentQuestion" question-no="ctrl.current_question_no()" total-questions="ctrl.totalQuestions" on-answered="ctrl.nextQuestion(answer)"></quiz-question>
     </div>
     <div class="outcome"  ng-show="ctrl.showOutcome">
-      <quiz-outcome outcome="ctrl.outcome"></quiz-outcome>
+      <quiz-outcome outcome="ctrl.outcome" quiz="ctrl.quiz" score="ctrl.totalPoints()"></quiz-outcome>
       <div class="share-buttons">
         <fb-share page-url="{{ctrl.quizUrl()}}"></fb-share>
       </div>

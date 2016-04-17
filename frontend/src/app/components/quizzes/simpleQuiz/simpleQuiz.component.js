@@ -4,8 +4,8 @@
   var simpleQuiz = {
     templateUrl: 'app/components/quizzes/simpleQuiz/simpleQuiz.html',
     bindings: {
-        urlName: '=',
-        resultCode: '='
+        urlName: '<',
+        resultCode: '<'
     },
     controller: simpleQuizController,
     controllerAs: 'ctrl'
@@ -23,8 +23,10 @@
     ctrl.quiz = {};
     ctrl.nextQuestion = nextQuestion;
     ctrl.current_question_no = current_question_no;
+    ctrl.totalPoints = totalPoints;
     ctrl.begin = begin;
     init();
+
     function init() {
       getQuiz();
     }
@@ -49,17 +51,9 @@
     function setQuizMetaTags(){
       metaTag.updateTag('description', quizData.active.title);
       metaTag.updateTag('og:title', quizData.active.title);
-      metaTag.updateTag('og:image', domainUrl() + '/assets/images/' + quizData.active.img_url);
+      metaTag.updateTag('og:image', metaTag.domainUrl() + '/assets/images/' + quizData.active.img_url);
       metaTag.updateTag('og:description', quizData.active.description);
-      metaTag.updateTag('og:url', fullUrl());
-    }
-
-    function setOutcomeMetaTags(){
-      metaTag.updateTag('description', quizData.active.title);
-      metaTag.updateTag('og:title', quizData.active.title);
-      metaTag.updateTag('og:image', domainUrl() + '/assets/images/' + quizData.outcome.img_url);
-      metaTag.updateTag('og:description', quizData.outcome.description);
-      metaTag.updateTag('og:url', fullUrl());
+      metaTag.updateTag('og:url', metaTag.fullUrl());
     }
 
     function begin(){
@@ -83,22 +77,11 @@
       );
     }
 
-    function fullUrl(){
-      return $location.absUrl();
-    }
-
     function quizUrl(){
       var fullUrl = $location.absUrl();
       var urlNameEndPos = fullUrl.search(ctrl.urlName) + ctrl.urlName.length;
       var quizUrl = fullUrl.substr(0,urlNameEndPos);
       return quizUrl;
-    }
-
-    function domainUrl(){
-      var fullUrl = $location.absUrl();
-      var pathStartPos = fullUrl.search($location.path())
-      var domainUrl = fullUrl.substr(0,pathStartPos);
-      return domainUrl;
     }
 
     function current_question_no(){
@@ -113,7 +96,7 @@
       }else {
         ctrl.currentQuestion = quizData.active.questions[currentQuestionIndex];
       }
-    } 
+    }
 
     function totalPoints(){
       var points = 0;
@@ -136,12 +119,10 @@
       quizData = quiz.getOutcome(urlName, resultCode);
       quizData.outcome.$promise.then(function(data){
         ctrl.outcome = quizData.outcome;
-        setOutcomeMetaTags();
       });
     }
   }
   angular
   .module('frontend')
   .component('simpleQuiz', simpleQuiz);
-
 })();

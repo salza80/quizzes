@@ -3,9 +3,9 @@
   var quizQuestion = {
       templateUrl: 'app/components/quizzes/shared/quizQuestion/quizQuestion.html',
       bindings: {
-          question: '=',
-          questionNo: '=',
-          totalQuestions: '=',
+          question: '<',
+          questionNo: '<',
+          totalQuestions: '<',
           onAnswered: '&'
       },
       controller: quizQuestionController,

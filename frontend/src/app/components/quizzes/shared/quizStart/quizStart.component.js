@@ -3,7 +3,7 @@
   var quizStart = {
       templateUrl: 'app/components/quizzes/shared/quizStart/quizStart.html',
       bindings: {
-          quiz: '=',
+          quiz: '<',
           onBegin: '&'
       },
       controller: quizStartController,
