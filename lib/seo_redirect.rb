@@ -9,6 +9,10 @@ class SeoRedirect
       [301, {'Location' => location, 'Content-Type' => 'text/html'}, ['seo version']]
   end
 
+  def rewrite(env, location)
+    env['PATH_INFO'] = location
+  end
+
   def call(env)
     request = Rack::Request.new(env)
     query_hash = Rack::Utils.parse_query(request.path)
@@ -18,6 +22,7 @@ class SeoRedirect
     Rails.logger.info "params: #{request.params}"
     Rails.logger.info "environment #{ENV["RACK_ENV"]}"
     Rails.logger.info "Content-Type #{request.content_type}"
+    Rails.logger.info "Path_Info #{env['PATH_INFO']}"
     staticfolder = ""
     if ENV["RACK_ENV"] == "production"
       staticfolder = "prod"
@@ -27,12 +32,15 @@ class SeoRedirect
     # puts query_hash
     if USER_AGENT_STRINGS.include?(request.user_agent) and not request.path.include? "."
       Rails.logger.info 'WILL REDIRECT TO SEO STATIC PAGE'
-      redirect("/static/#{staticfolder}#{request.path}/page.html")
+      # redirect("/static/#{staticfolder}#{request.path}/page.html")
+      rewrite(env, "/static/#{staticfolder}#{request.path}/page.html")
+      @app.call(env)
     elsif request.params.has_key?('_escaped_fragment_')
       # should ignore google crawler
         Rails.logger.info 'WILL REDIRECT TO SEO STATIC PAGE'
-        redirect("/static/#{staticfolder}#{request.params['_escaped_fragment_']}/page.html")
-        # @app.call(env)
+        # redirect("/static/#{staticfolder}#{request.params['_escaped_fragment_']}/page.html")
+        rewrite(env, "/static/#{staticfolder}#{request.params['_escaped_fragment_']}/page.html")
+        @app.call(env)
     else
       # return redirect(redirects[req.path]) if redirects.include?(req.path)
       @app.call(env)
