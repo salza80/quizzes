@@ -9,8 +9,15 @@ class SeoRedirect
       [301, {'Location' => location, 'Content-Type' => 'text/html'}, ['seo version']]
   end
 
-  def rewrite(env, location)
-    env['PATH_INFO'] = location
+  def serveFile(file)
+    if File.exists?(file)
+      f = File.read(file)
+      Rails.logger.info file
+      [200, {'Content-Type' => 'text/html'}, [File.read(file)]]
+    else
+      [404, {'Content-Type' => 'text/html'}, ['Not Found']] 
+    end
+
   end
 
   def call(env)
@@ -22,7 +29,8 @@ class SeoRedirect
     Rails.logger.info "params: #{request.params}"
     Rails.logger.info "environment #{ENV["RACK_ENV"]}"
     Rails.logger.info "Content-Type #{request.content_type}"
-    Rails.logger.info "Path_Info #{env['PATH_INFO']}"
+
+
     staticfolder = ""
     if ENV["RACK_ENV"] == "production"
       staticfolder = "prod"
@@ -33,17 +41,35 @@ class SeoRedirect
     if USER_AGENT_STRINGS.include?(request.user_agent) and not request.path.include? "."
       Rails.logger.info 'WILL REDIRECT TO SEO STATIC PAGE'
       # redirect("/static/#{staticfolder}#{request.path}/page.html")
-      rewrite(env, "/static/#{staticfolder}#{request.path}/page.html")
-      @app.call(env)
+      serveFile("public/static/#{staticfolder}#{request.path}/page.html")
+
     elsif request.params.has_key?('_escaped_fragment_')
       # should ignore google crawler
         Rails.logger.info 'WILL REDIRECT TO SEO STATIC PAGE'
-        # redirect("/static/#{staticfolder}#{request.params['_escaped_fragment_']}/page.html")
-        rewrite(env, "/static/#{staticfolder}#{request.params['_escaped_fragment_']}/page.html")
-        @app.call(env)
+        serveFile("public/static/#{staticfolder}#{request.params['_escaped_fragment_']}/page.html")
+        # @app.call(env)
     else
       # return redirect(redirects[req.path]) if redirects.include?(req.path)
       @app.call(env)
     end
   end
 end
+
+
+# @root = File.expand_path(File.dirname(__FILE__))
+
+# run Proc.new { |env|
+#   # Extract the requested path from the request
+#   path = Rack::Utils.unescape(env['PATH_INFO'])
+#   index_file = @root + "#{path}/index.html"
+
+#   if File.exists?(index_file)
+#     # Return the index
+#     [200, {'Content-Type' => 'text/html'}, File.read(index_file)]
+#     # NOTE: using Ruby >= 1.9, third argument needs to respond to :each
+#     # [200, {'Content-Type' => 'text/html'}, [File.read(index_file)]]
+#   else
+#     # Pass the request to the directory app
+#     Rack::Directory.new(@root).call(env)
+#   end
+# }
