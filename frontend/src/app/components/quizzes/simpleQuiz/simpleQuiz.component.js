@@ -79,10 +79,11 @@
     }
 
     function quizUrl(){
-      var fullUrl = $location.absUrl();
-      var urlNameEndPos = fullUrl.search(ctrl.urlName) + ctrl.urlName.length;
-      var quizUrl = fullUrl.substr(0,urlNameEndPos);
-      return quizUrl;
+     return metaTag.fullUrl()
+      // var fullUrl = $location.absUrl();
+      // var urlNameEndPos = fullUrl.search(ctrl.urlName) + ctrl.urlName.length;
+      // var quizUrl = fullUrl.substr(0,urlNameEndPos);
+      // return quizUrl;
     }
 
     function current_question_no(){
