@@ -25,6 +25,7 @@
     ctrl.current_question_no = current_question_no;
     ctrl.totalPoints = totalPoints;
     ctrl.begin = begin;
+    ctrl.quizUrl = quizUrl
     init();
 
     function init() {
