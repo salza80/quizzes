@@ -1,5 +1,6 @@
 
-
+- To view test server
+http://quizzes1.herokuapp.com/
 
 == Setup Dev Env
   Database - postgres
